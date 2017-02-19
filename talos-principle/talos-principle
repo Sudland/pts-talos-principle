@@ -1,0 +1,168 @@
+#!/bin/bash
+export vblank_mode=0
+export INI="$(pwd)/Talos.ini"
+height="1080"
+width="1920"
+mode="0" # 0 = windowed, 1 = fullscreen
+API="OGL" # "OGL","DX9","DX11","SWR","VLK" #Talos need to be launched at 64-bit to be able to run vulkan API
+gpu="Ultra" # Lowest,Low,Medium,High,Ultra
+vram="Ultra" # Lowest,Low,Medium,High,Ultra
+cpu="Ultra" # Lowest,Low,Medium,High,Ultra
+durotation="10" # 1..190 Demo lasts for 190~ seconds
+arch="x64" # x64,x86
+
+
+for i in "$@"
+do
+case $i in
+    --arch=*)
+    arch="${i#*=}"
+    shift
+    ;;
+    --height=*)
+    height="${i#*=}"
+    shift
+    ;;
+    --width=*)
+    width="${i#*=}"
+    shift
+    ;;
+    --mode=*)
+    mode="${i#*=}"
+    shift
+    ;;
+    --api=*)
+    API="${i#*=}"
+    shift
+    ;;
+    --gpu=*)
+    gpu="${i#*=}"
+    shift
+    ;;
+    --vram=*)
+    vram="${i#*=}"
+    shift
+    ;;
+    --cpu=*)
+    cpu="${i#*=}"
+    shift
+    ;;
+    --durotation=*)
+    durotation="${i#*=}"
+    shift
+    ;;
+    *)
+    ;;
+esac
+done
+
+#echo -e "globals.height=$height
+#globals.width=$width
+#globals.mode=$mode
+#globals.API="\"$API"\"
+#globals.gpu="\"$gpu"\"
+#globals.vram="\"$vram"\"
+#globals.cpu="\"$cpu"\"
+#globals.durotation="\"$durotation"\"" > $DEBUG_REAL_HOME.steam/steam/steamapps/common/The\ Talos\ #Principle/Content/Talos/Scripts/settings.lua
+
+echo -e '--TODO
+--Diff global log etter benchmark fullført
+--Autoexec bench.lua?
+--Bash Variable convertere til lua for oppløsning, CPU=Ultra..Low, GPU=ultra..low, Mem=ultra..low, API=Opengl og Vulkan.
+--Install script for phoronix
+--pre.sh launch for phoronix
+--xml variable etc
+--optimize finpussing
+--require "config"
+RunAsync(function()
+
+function globals.benchmark()  
+    hud_bShowGfxAPI = 1
+    gamHandleInitialInteractions()
+    prj_psGameOptionPlayerSpeed = 2
+    cht_bEnableCheats = 2
+    cht_bAutoTestBot = 1
+    bot_bSkipTerminalsAndMessages = 1
+    cht_bAllowAllPuzzleMechanics = 1
+    prjStartNewTalosGame("Content/Talos/Levels/Demo.nfo")
+    prjStartAutomatedBenchmark(globals.durotation)
+    Wait(CustomEvent("AutomatedBenchmark_Finished"))
+    Quit()
+  end
+
+globals.height='$height'
+globals.width='$width'
+globals.mode='$mode'
+globals.API='"\"$API"\"'
+globals.gpu='"\"$gpu"\"'
+globals.vram='"\"$vram"\"'
+globals.cpu='"\"$cpu"\"'
+globals.durotation='"\"$durotation"\"'
+
+local DIR = "Content/Talos/Config/";
+
+local GPU = {
+  ["Lowest"]  = DIR .. "GPU-QL1.cfg",
+  ["Low"]     = DIR .. "GPU-QL2.cfg",
+  ["Medium"]  = DIR .. "GPU-QL3.cfg",
+  ["High"]    = DIR .. "GPU-QL4.cfg", 
+  ["Ultra"]   = DIR .. "GPU-QL5.cfg"  
+}
+local CPU = {
+  ["Lowest"]  = DIR .. "CPU-QL1.cfg",
+  ["Low"]     = DIR .. "CPU-QL2.cfg",
+  ["Medium"]  = DIR .. "CPU-QL3.cfg",
+  ["High"]    = DIR .. "CPU-QL4.cfg",   
+  ["Ultra"]   = DIR .. "CPU-QL5.cfg"  
+}
+local vram = {
+  ["Lowest"]  = DIR .. "TEX-QL1.cfg",
+  ["Low"]     = DIR .. "TEX-QL2.cfg",
+  ["Medium"]  = DIR .. "TEX-QL3.cfg",
+  ["High"]    = DIR .. "TEX-QL4.cfg",   
+  ["Ultra"]   = DIR .. "TEX-QL5.cfg"  
+}
+
+  dofile(GPU[globals.gpu]);
+  dofile(CPU[globals.cpu]);
+  dofile(vram[globals.vram]);
+
+  sfx_fMasterVolume = 0
+  prj_iWorldCacheMode = 0
+
+  gfx_strAPI = globals.API
+  gfx_bFullScreen = globals.mode
+  gfx_pixWinHeight = globals.height
+  gfx_pixWinWidth = globals.width
+  gfx_pixResHeight = globals.height
+  gfx_pixResWidth = globals.width
+  gfx_iWaitVSyncs = 0
+
+  Wait(CustomEvent("StartScreen_Shown"));
+  globals.benchmark() --run
+
+end);' > $(pwd)/bench.lua
+
+export STEAM_CLIENT_CONFIG_FILE="$DEBUG_REAL_HOME/.steam/steam.cfg"
+export Steam3Master="127.0.0.1:57343"
+export SteamStreamingMaximumResolution=""
+export SteamStreamingAllowGameVsync=""
+export SDL_VIDEO_X11_DGAMOUSE="0"
+export SteamAppId="257510"
+export SteamTenfoot="0"
+export HOME=$DEBUG_REAL_HOME
+export LD_PRELOAD=":$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_64/gameoverlayrenderer.so"	
+
+if [[ $arch -eq "x64" ]]; then
+export LD_LIBRARY_PATH="$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/panorama:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib::$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_64:$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin/x64:$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin/x64/bin"
+export LD_PRELOAD="$LD_PRELOAD:$(pwd)/hook64.so"
+  rm "$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Temp/run.txt"
+  INI="$(pwd)/Talos.ini" "$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin/x64/Talos" +exec $(pwd)/bench.lua | awk '/Average: /{print ;getline; print}' | sed ':a;N;$!ba;s/\n/ /g' > $LOG_FILE
+
+else
+
+export LD_LIBRARY_PATH="$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/panorama:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib::$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_32:$DEBUG_REAL_HOME.local/share/Steam/ubuntu12_64:$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin:$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin/bin"
+export LD_PRELOAD="$LD_PRELOAD:$(pwd)/hook64.so"
+  rm "$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Temp/run.txt" 
+  INI="$(pwd)/Talos.ini" "$DEBUG_REAL_HOME.local/share/Steam/steamapps/common/The Talos Principle/Bin/Talos" +exec $(pwd)/bench.lua | awk '/Average: /{print ;getline; print}' | sed ':a;N;$!ba;s/\n/ /g' > $LOG_FILE
+fi
