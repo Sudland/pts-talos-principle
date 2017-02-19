@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!--Phoronix Test Suite v5.6.0m5 (Dedilovo)-->
+<PhoronixTestSuite>
+  <TestInformation>
+    <Title>Talos Principle</Title>
+    <Description>A Steam-based test of the Talos Principle game.</Description>
+    <ResultScale>Frames Per Second</ResultScale>
+    <Proportion>HIB</Proportion>
+    <TimesToRun>3</TimesToRun>
+    <PreInstallMessage>This test profile assumes you have the Valve Steam client already installed for your operating system / distribution and that it's installed to the standard path. Your Steam account must also be active and the game already installed. If the test appears hung you may need to manually exit the Steam client.</PreInstallMessage>
+  </TestInformation>
+  <TestProfile>
+    <Version>1.0.0</Version>
+    <SupportedPlatforms>Linux</SupportedPlatforms>
+    <SoftwareType>Game</SoftwareType>
+    <TestType>Graphics</TestType>
+    <License>Free</License>
+    <Status>Verified</Status>
+    <SupportedArchitectures>x86, x86_64</SupportedArchitectures>
+    <EnvironmentSize>10</EnvironmentSize>
+    <ProjectURL>http://store.steampowered.com/app/257510/</ProjectURL>
+    <Maintainer>Michael Larabel</Maintainer>
+  </TestProfile>
+  <TestSettings>
+    <Default>
+      <Arguments></Arguments>
+    </Default>
+    <Option>
+      <DisplayName>Mode</DisplayName>
+      <Identifier>mode</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>Fullscreen</Name>
+          <Value>--mode=1</Value>
+        </Entry>
+        <Entry>
+          <Name>Windowed</Name>
+          <Value>--mode=0</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>Resolution</DisplayName>
+      <Identifier>auto-resolution</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>$VIDEO_WIDTH x $VIDEO_HEIGHT</Name>
+          <Value>--width=$VIDEO_WIDTH --height=$VIDEO_HEIGHT</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>Architecture</DisplayName>
+      <Identifier>arch</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>32-bit</Name>
+          <Value>--arch=x86</Value>
+        </Entry>
+        <Entry>
+          <Name>64-bit</Name>
+          <Value>--arch=x64</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>API</DisplayName>
+      <Identifier>api</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>OpenGL</Name>
+          <Value>--api=OGL</Value>
+        </Entry>
+        <Entry>
+          <Name>Vulkan (64-bit Only)</Name>
+          <Value>--api=VLK</Value>
+        </Entry>
+        <Entry>
+          <Name>Software Rendering</Name>
+          <Value>--api=SWR</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>GPU Quality</DisplayName>
+      <Identifier>gpu-quality</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>Lowest</Name>
+          <Value>--gpu=Lowest</Value>
+        </Entry>
+        <Entry>
+          <Name>Low</Name>
+          <Value>--gpu=Low</Value>
+        </Entry>
+        <Entry>
+          <Name>Medium</Name>
+          <Value>--gpu=Medium</Value>
+        </Entry>
+        <Entry>
+          <Name>High</Name>
+          <Value>--gpu=High</Value>
+        </Entry>
+        <Entry>
+          <Name>Ultra</Name>
+          <Value>--gpu=Ultra</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>CPU Quality</DisplayName>
+      <Identifier>cpu-quality</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+         <Entry>
+          <Name>Lowest</Name>
+          <Value>--cpu=Lowest</Value>
+        </Entry>
+        <Entry>
+          <Name>Low</Name>
+          <Value>--cpu=Low</Value>
+        </Entry>
+        <Entry>
+          <Name>Medium</Name>
+          <Value>--cpu=Medium</Value>
+        </Entry>
+        <Entry>
+          <Name>High</Name>
+          <Value>--cpu=High</Value>
+        </Entry>
+        <Entry>
+          <Name>Ultra</Name>
+          <Value>--cpu=Ultra</Value>
+        </Entry>
+      </Menu>
+    </Option>
+    <Option>
+      <DisplayName>VRAM Quality</DisplayName>
+      <Identifier>vram-quality</Identifier>
+      <DefaultEntry>0</DefaultEntry>
+      <Menu>
+        <Entry>
+          <Name>Lowest</Name>
+          <Value>--vram=Lowest</Value>
+        </Entry>
+        <Entry>
+          <Name>Low</Name>
+          <Value>--vram=Low</Value>
+        </Entry>
+        <Entry>
+          <Name>Medium</Name>
+          <Value>--vram=Medium</Value>
+        </Entry>
+        <Entry>
+          <Name>High</Name>
+          <Value>--vram=High</Value>
+        </Entry>
+        <Entry>
+          <Name>Ultra</Name>
+          <Value>--vram=Ultra</Value>
+        </Entry>
+      </Menu>
+    </Option>
+  </TestSettings>
+</PhoronixTestSuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--Phoronix Test Suite v4.8.0m2 (Sokndal)-->
+<PhoronixTestSuite>
+  <Downloads>
+    <Package>
+      <URL>file:///home/user/.phoronix-test-suite/test-profiles/local/talos-principle/talos-principle.zip</URL>
+      <MD5>a8855078d2ea62a5673cefd79ecdafb9</MD5>
+      <FileSize>2887</FileSize>
+    </Package>
+  </Downloads>
+</PhoronixTestSuite>

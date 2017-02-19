@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--Phoronix Test Suite v5.6.0m5 (Dedilovo)-->
+<PhoronixTestSuite>
+  <ResultsParser>
+    <OutputTemplate>INF:    Average: #_RESULT_# FPS (256.9 w/o extremes) INF:   Extremes: #_MAX_RESULT_# max, #_MIN_RESULT_# min INF</OutputTemplate>
+    <LineHint>Average</LineHint>
+  </ResultsParser>
+</PhoronixTestSuite>
+
