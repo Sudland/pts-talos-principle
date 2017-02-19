@@ -56,24 +56,8 @@ case $i in
 esac
 done
 
-#echo -e "globals.height=$height
-#globals.width=$width
-#globals.mode=$mode
-#globals.API="\"$API"\"
-#globals.gpu="\"$gpu"\"
-#globals.vram="\"$vram"\"
-#globals.cpu="\"$cpu"\"
-#globals.durotation="\"$durotation"\"" > $DEBUG_REAL_HOME.steam/steam/steamapps/common/The\ Talos\ #Principle/Content/Talos/Scripts/settings.lua
 
-echo -e '--TODO
---Diff global log etter benchmark fullført
---Autoexec bench.lua?
---Bash Variable convertere til lua for oppløsning, CPU=Ultra..Low, GPU=ultra..low, Mem=ultra..low, API=Opengl og Vulkan.
---Install script for phoronix
---pre.sh launch for phoronix
---xml variable etc
---optimize finpussing
---require "config"
+echo -e '
 RunAsync(function()
 
 function globals.benchmark()  
