@@ -1,4 +1,6 @@
-This project was something I did to learn how to make pts.
+Warning: You should always be careful for what you install with phoronix-test-suite.
+
+This project was something I only did to learn how to make pts.
 
 Anyone wanting to test this out you need to copy the repo's folder talos-principle into your 
 ~/.phoronix-test-suite/test-profiles/local/ and folder.
