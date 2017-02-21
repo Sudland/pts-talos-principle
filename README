@@ -1,0 +1,21 @@
+This project was something I did to learn how to make pts.
+
+Anyone wanting to test this out you need to copy the repo's folder talos-principle into your ~/.phoronix-test-suite/test-profiles/local/ and 
+folder.
+
+Open xml file downloads.xml and edit <URL>file://home/user</URL> user out with your username.
+
+From here you should be able to run it with command
+  phoronix-test-suite run local/talos-principle
+  
+  
+What's the difference with this test, then avalible https://openbenchmarking.org/test/pts/talos-principle-1.2.0?
+Few flaws:
+  * Unskippable intro (BUG in its software itself, cause even if you set skipscene=0 it will ignore it)
+  * Warning message (Outdated drivers or start in safemode after bad exit)
+  * Does *somtimes* interfere with users configuration
+
+This pts fixes that, thanks to hook.c. 
+hook.c tells the software where to read the user configuration and only give it read-only permission.
+
+Granted, with my C programming knowledge you can easily see bad coding (I am still learning).
