@@ -11,7 +11,7 @@ From here you should be able to run it with command
   
 What's the difference with this test, then avalible https://openbenchmarking.org/test/pts/talos-principle-1.2.0?
 Few flaws:
-  * Unskippable intro (BUG in its software itself, cause even if you set skipscene=0 it will ignore it)
+  * Unskippable intro (BUG: even if you set men_bShowIntroCutscene = 0; it will ignore it)
   * Warning message (Outdated drivers or start in safemode after bad exit)
   * Does *somtimes* interfere with users configuration
 
