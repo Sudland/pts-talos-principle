@@ -1,7 +1,7 @@
 This project was something I did to learn how to make pts.
 
-Anyone wanting to test this out you need to copy the repo's folder talos-principle into your ~/.phoronix-test-suite/test-profiles/local/ and 
-folder.
+Anyone wanting to test this out you need to copy the repo's folder talos-principle into your 
+~/.phoronix-test-suite/test-profiles/local/ and folder.
 
 Open xml file downloads.xml and edit <URL>file://home/user</URL> user out with your username.
 
