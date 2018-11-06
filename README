@@ -20,4 +20,4 @@ Few flaws:
 This pts fixes that, thanks to hook.c. 
 hook.c tells the software where to read the user configuration and only give it read-only permission.
 
-Granted, with my C programming knowledge you can easily see bad coding (I am still learning).
+hook.c has alot of C programming beginner mistakes, plan to update this.
